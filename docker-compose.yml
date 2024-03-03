@@ -1,0 +1,14 @@
+version: '3'
+services:
+  postgres:
+    container_name: sample-postgres-db
+    build: ./dockerfiles/postgres
+    restart: always
+    ports: 
+      - "5432:5432"
+    volumes:
+      - ./postgres/init:/docker-entrypoint-initdb.d
+      - ./db-store:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres_user
+      POSTGRES_PASSWORD: postgres_password
