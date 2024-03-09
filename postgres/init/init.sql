@@ -1,15 +1,20 @@
 -- DB作成
-CREATE DATABASE sample_db;
+CREATE DATABASE todo_db;
+
 -- 作成したDBに接続
-\c sample_db;
+\c todo_db;
+
 -- テーブル作成
-DROP TABLE IF EXISTS sample;
-CREATE TABLE sample (
+DROP TABLE IF EXISTS todo;
+CREATE TABLE todo (
 	id integer NOT NULL PRIMARY KEY,
-	name char(100) NOT NULL,
-	created_date_time timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+	title varchar(30) NOT NULL,
+	content varchar(255),
+	created_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
+
 -- ID用シーケンス作成
-CREATE SEQUENCE sample_id_seq START 1;
+CREATE SEQUENCE todo_id_seq START 1;
+
 -- サンブルデータの登録
-INSERT INTO sample (id, name) VALUES(nextval('sample_id_seq'), 'sample name');
+INSERT INTO todo (id, title) VALUES(nextval('todo_id_seq'), 'todo1');
